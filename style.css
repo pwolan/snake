@@ -1,0 +1,25 @@
+* {
+    box-sizing: border-box;
+}
+
+#board {
+    display: grid;
+    border: 1px solid black;
+    width: moz-fit-content;
+    width: fit-content;
+}
+
+.cell {
+    background-color: green;
+    width: 30px;
+    height: 30px;
+    border: 1px solid black;
+}
+
+.border {
+    background-color: #f00;
+}
+
+.snake {
+    background-color: orange;
+}
