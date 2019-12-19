@@ -16,16 +16,5 @@ const render = (width, height) => {
   }
 };
 
-const reload = (S) => {
-  let oldCells = document.querySelectorAll('.cell')
-  oldCells.forEach(cell => {
-    cell.classList.remove('snake')
-  })
 
 
-  S.tabSnake.forEach(element => {
-    const cell = document.getElementById(`${element.h}|${element.w}`)
-    cell.classList.add('snake')
-  });
-
-};

@@ -1,37 +1,26 @@
 //start Values
 const width = 10;
 const height = 10;
-let boardTable = [];
-for (let i = 0; i < width; i++) {
-    boardTable[i] = [];
-    for (let j = 0; j < height; j++) {
-        boardTable[i][j] = 0;
-    }
-}
+const Board = new BoardClass(width, height)
+let S = new Snake(Board.table)
 
-let snakeStart = {
-    w: Math.floor(Math.random() * width),
-    h: Math.floor(Math.random() * height)
-};
-boardTable[snakeStart.h][snakeStart.w] = 1;
-
-let S = new Snake(boardTable)
 console.log(S);
+console.log(Board);
 render(width, height);
 
-
-console.table(boardTable);
-console.log(boardTable);
-
+Board.appleGenerate(S)
 
 document.addEventListener("keydown", e => {
     S.changeDirection(e.code)
 });
 
-let currPos = snakeStart;
 
 setInterval(() => {
     S.step()
-    console.log(S.tabSnake);
-    reload(S)
-}, 1000);
+    if (Board.checkApple(S)) {
+        S.length++
+        Board.appleGenerate(S)
+    }
+    S.controlLength()
+    Board.reload(S)
+}, 100);

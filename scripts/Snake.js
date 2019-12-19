@@ -56,6 +56,9 @@ class Snake {
         }
         this.first = newPos
         this.tabSnake.unshift(newPos)
+
+    }
+    controlLength() {
         this.tabSnake = this.tabSnake.slice(0, this.length)
     }
 }
