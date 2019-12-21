@@ -14,13 +14,22 @@ document.addEventListener("keydown", e => {
     S.changeDirection(e.code)
 });
 
-
-setInterval(() => {
+Board.reload(S)
+let interval = setInterval(() => {
     S.step()
     if (Board.checkApple(S)) {
         S.length++
         Board.appleGenerate(S)
     }
-    S.controlLength()
-    Board.reload(S)
-}, 100);
+    if (Board.checkBorder(S) || S.checkSnakeCollision()) {
+        clearInterval(interval)
+        alert('Przegrana. Spróbuj jeszcze raz!')
+    } else {
+        S.controlLength()
+        Board.reload(S)
+    }
+}, 300);
+
+document.getElementById('reload').addEventListener('click', () => {
+    document.location.reload(true)
+})

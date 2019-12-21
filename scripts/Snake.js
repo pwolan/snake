@@ -14,21 +14,25 @@ class Snake {
             h: Math.floor(this.height / 2)
         };
         this.tabSnake.push(this.first)
-        this.length = 1
+        this.length = 4
     }
     changeDirection(code) {
         switch (code) {
             case "KeyW":
-                this.currDirection = "top";
+                if (this.currDirection !== "bottom")
+                    this.currDirection = "top";
                 break;
             case "KeyA":
-                this.currDirection = "left";
+                if (this.currDirection !== "right")
+                    this.currDirection = "left";
                 break;
             case "KeyS":
-                this.currDirection = "bottom";
+                if (this.currDirection !== "top")
+                    this.currDirection = "bottom";
                 break;
             case "KeyD":
-                this.currDirection = "right";
+                if (this.currDirection !== "left")
+                    this.currDirection = "right";
                 break;
             default:
                 break;
@@ -60,5 +64,11 @@ class Snake {
     }
     controlLength() {
         this.tabSnake = this.tabSnake.slice(0, this.length)
+    }
+    checkSnakeCollision() {
+        let tabToSearch = [...this.tabSnake]
+        tabToSearch.shift()
+        let find = tabToSearch.findIndex(cell => cell.w === this.first.w && cell.h === this.first.h)
+        return find !== -1
     }
 }

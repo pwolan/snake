@@ -18,12 +18,32 @@ class BoardClass {
         let oldCells = document.querySelectorAll('.cell')
         oldCells.forEach(cell => {
             cell.classList.remove('snake')
+            cell.style.backgroundImage = ''
         })
 
         S.tabSnake.forEach(element => {
             const cell = document.getElementById(`${element.h}|${element.w}`)
             cell.classList.add('snake')
         });
+
+        const head = document.getElementById(`${S.first.h}|${S.first.w}`)
+        switch (S.currDirection) {
+            case "top":
+                head.style.backgroundImage = 'url(img/head-top.png)'
+                break;
+            case "left":
+                head.style.backgroundImage = 'url(img/head-left.png)'
+                break;
+            case "bottom":
+                head.style.backgroundImage = 'url(img/head-bottom.png)'
+                break;
+            case "right":
+                head.style.backgroundImage = 'url(img/head-right.png)'
+                break;
+
+            default:
+                break;
+        }
 
     }
     appleGenerate(S) {
@@ -47,5 +67,9 @@ class BoardClass {
     }
     checkApple(S) {
         return (S.first.w === this.apple.w && S.first.h === this.apple.h)
+    }
+    checkBorder(S) {
+        const element = document.getElementById(`${S.first.h}|${S.first.w}`)
+        return !element
     }
 }

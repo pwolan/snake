@@ -21,9 +21,13 @@
 }
 
 .snake {
-  background-color: orange;
+  background-image: url(img/body.png);
+  background-size: contain;
+  background-position: center;
 }
 
 .apple {
-  background-color: yellow;
+  background-image: url(img/apple.png);
+  background-size: contain;
+  background-position: center;
 }
