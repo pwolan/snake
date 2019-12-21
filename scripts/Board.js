@@ -24,9 +24,11 @@ class BoardClass {
         S.tabSnake.forEach(element => {
             const cell = document.getElementById(`${element.h}|${element.w}`)
             cell.classList.add('snake')
+            cell.style.transform = ''
         });
 
         const head = document.getElementById(`${S.first.h}|${S.first.w}`)
+
         switch (S.currDirection) {
             case "top":
                 head.style.backgroundImage = 'url(img/head-top.png)'
@@ -40,10 +42,76 @@ class BoardClass {
             case "right":
                 head.style.backgroundImage = 'url(img/head-right.png)'
                 break;
-
-            default:
-                break;
         }
+        let dirChanges = []
+        if (S.tabSnake.length > 2) {
+            for (let i = 0; i < S.tabSnake.length - 1; i++) {
+                let toPush;
+                if (S.tabSnake[i].w - S.tabSnake[i + 1].w === 1) {
+                    toPush = "right"
+                }
+                if (S.tabSnake[i].w - S.tabSnake[i + 1].w === -1) {
+                    toPush = "left"
+                }
+                if (S.tabSnake[i].h - S.tabSnake[i + 1].h === 1) {
+                    toPush = "bottom"
+                }
+                if (S.tabSnake[i].h - S.tabSnake[i + 1].h === -1) {
+                    toPush = "top"
+                }
+                dirChanges.push(toPush)
+            }
+        }
+        console.log(S.currDirection);
+        console.log(dirChanges);
+        for (let i = 1; i < S.tabSnake.length; i++) {
+            const cell = document.getElementById(`${S.tabSnake[i].h}|${S.tabSnake[i].w}`)
+            cell.style.backgroundImage = 'url(img/body.png)'
+            switch (dirChanges[i - 1]) {
+                case "top":
+                    if (dirChanges[i] === "left") {
+                        cell.style.backgroundImage = 'url(img/body-corner3.png)'
+                    }
+                    if (dirChanges[i] === "right") {
+                        cell.style.backgroundImage = 'url(img/body-corner4.png)'
+                    }
+                    break;
+                case "left":
+                    if (dirChanges[i] === "top") {
+                        cell.style.backgroundImage = 'url(img/body-corner2.png)'
+                    } else if (dirChanges[i] === "bottom") {
+                        cell.style.backgroundImage = 'url(img/body-corner4.png)'
+                    } else {
+                        cell.style.transform = 'rotate(270deg)'
+                    }
+                    break;
+                case "bottom":
+                    if (dirChanges[i] === "left") {
+                        cell.style.backgroundImage = 'url(img/body-corner1.png)'
+                    } else if (dirChanges[i] === "right") {
+                        cell.style.backgroundImage = 'url(img/body-corner2.png)'
+                    } else {
+                        cell.style.transform = 'rotate(180deg)'
+                    }
+                    break;
+                case "right":
+                    if (dirChanges[i] === "top") {
+                        cell.style.backgroundImage = 'url(img/body-corner1.png)'
+                    } else if (dirChanges[i] === "bottom") {
+                        cell.style.backgroundImage = 'url(img/body-corner3.png)'
+                    } else {
+                        cell.style.transform = 'rotate(90deg)'
+                    }
+                    break;
+            }
+
+        }
+        if (S.tabSnake.length > 2) {
+            const tail = document.getElementById(`${S.tabSnake[S.length-1].h}|${S.tabSnake[S.length-1].w}`)
+            tail.style.backgroundImage = 'url(img/tail-bottom.png)'
+        }
+
+
 
     }
     appleGenerate(S) {
