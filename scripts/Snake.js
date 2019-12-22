@@ -4,8 +4,8 @@ class Snake {
         this.currDirection = "top";
         this.lenght;
         this.first;
-        this.width = board.length;
-        this.height = board[0].length;
+        this.width = board.width;
+        this.height = board.height;
         this.init();
     }
     init() {

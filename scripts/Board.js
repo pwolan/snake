@@ -2,17 +2,7 @@ class BoardClass {
     constructor(w, h) {
         this.width = w
         this.height = h
-        this.table = []
         this.apple
-        this.init()
-    }
-    init() {
-        for (let i = 0; i < width; i++) {
-            this.table[i] = [];
-            for (let j = 0; j < height; j++) {
-                this.table[i][j] = 0;
-            }
-        }
     }
     reload(S) {
         let oldCells = document.querySelectorAll('.cell')
@@ -62,8 +52,6 @@ class BoardClass {
                 dirChanges.push(toPush)
             }
         }
-        console.log(S.currDirection);
-        console.log(dirChanges);
         for (let i = 1; i < S.tabSnake.length; i++) {
             const cell = document.getElementById(`${S.tabSnake[i].h}|${S.tabSnake[i].w}`)
             cell.style.backgroundImage = 'url(img/body.png)'

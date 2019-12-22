@@ -2,19 +2,13 @@
 const width = 10;
 const height = 10;
 const Board = new BoardClass(width, height)
-let S = new Snake(Board.table)
+let S = new Snake(Board)
 
-console.log(S);
-console.log(Board);
 render(width, height);
 
 Board.appleGenerate(S)
-
-document.addEventListener("keydown", e => {
-    S.changeDirection(e.code)
-});
-
 Board.reload(S)
+
 let interval = setInterval(() => {
     S.step()
     if (Board.checkApple(S)) {
@@ -29,6 +23,10 @@ let interval = setInterval(() => {
         Board.reload(S)
     }
 }, 200);
+
+document.addEventListener("keydown", e => {
+    S.changeDirection(e.code)
+});
 
 document.getElementById('reload').addEventListener('click', () => {
     document.location.reload(true)
