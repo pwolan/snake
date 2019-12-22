@@ -23,12 +23,12 @@ let interval = setInterval(() => {
     }
     if (Board.checkBorder(S) || S.checkSnakeCollision()) {
         clearInterval(interval)
-        alert('Przegrana. Spróbuj jeszcze raz!')
+        Board.lose(S)
     } else {
         S.controlLength()
         Board.reload(S)
     }
-}, 300);
+}, 200);
 
 document.getElementById('reload').addEventListener('click', () => {
     document.location.reload(true)

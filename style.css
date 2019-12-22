@@ -1,8 +1,11 @@
 * {
   box-sizing: border-box;
 }
-
+html {
+  font-family: Arial, sans-serif;
+}
 #board {
+  margin: 0 auto;
   display: grid;
   border: 1px solid black;
   width: moz-fit-content;
@@ -30,4 +33,20 @@
   background-image: url(img/apple.png);
   background-size: contain;
   background-position: center;
+}
+
+button {
+  display: block;
+  margin: 15px auto;
+  padding: 5px 15px;
+  font-size: 2em;
+  cursor: pointer;
+  transition: 0.3s;
+}
+button:hover {
+  box-shadow: 0px 0px 4px 2px #666;
+}
+
+.lose {
+  text-align: center;
 }

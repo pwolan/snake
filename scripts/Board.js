@@ -44,7 +44,7 @@ class BoardClass {
                 break;
         }
         let dirChanges = []
-        if (S.tabSnake.length > 2) {
+        if (S.tabSnake.length >= 2) {
             for (let i = 0; i < S.tabSnake.length - 1; i++) {
                 let toPush;
                 if (S.tabSnake[i].w - S.tabSnake[i + 1].w === 1) {
@@ -106,7 +106,7 @@ class BoardClass {
             }
 
         }
-        if (S.tabSnake.length > 2) {
+        if (S.tabSnake.length > 1) {
             const tail = document.getElementById(`${S.tabSnake[S.length-1].h}|${S.tabSnake[S.length-1].w}`)
             tail.style.backgroundImage = 'url(img/tail-bottom.png)'
         }
@@ -128,6 +128,7 @@ class BoardClass {
         } while (S.tabSnake.findIndex(cell => cell.w == w && cell.h == h) !== -1)
         const appleCell = document.getElementById(`${h}|${w}`)
         appleCell.classList.add('apple')
+        appleCell.style.transform = ''
         this.apple = {
             w,
             h
@@ -139,5 +140,11 @@ class BoardClass {
     checkBorder(S) {
         const element = document.getElementById(`${S.first.h}|${S.first.w}`)
         return !element
+    }
+    lose(S) {
+        let lose = document.createElement('h2')
+        lose.textContent = `Twój wynik to: ${S.length}`
+        lose.classList.add('lose')
+        document.body.appendChild(lose)
     }
 }

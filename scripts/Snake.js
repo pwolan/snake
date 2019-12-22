@@ -14,7 +14,7 @@ class Snake {
             h: Math.floor(this.height / 2)
         };
         this.tabSnake.push(this.first)
-        this.length = 4
+        this.length = 1
     }
     changeDirection(code) {
         switch (code) {
