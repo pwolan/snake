@@ -17,20 +17,25 @@ class Snake {
         this.length = 1
     }
     changeDirection(code) {
+        console.log(code);
         switch (code) {
             case "KeyW":
+            case "ArrowUp":
                 if (this.currDirection !== "bottom")
                     this.currDirection = "top";
                 break;
             case "KeyA":
+            case "ArrowLeft":
                 if (this.currDirection !== "right")
                     this.currDirection = "left";
                 break;
             case "KeyS":
+            case "ArrowDown":
                 if (this.currDirection !== "top")
                     this.currDirection = "bottom";
                 break;
             case "KeyD":
+            case "ArrowRight":
                 if (this.currDirection !== "left")
                     this.currDirection = "right";
                 break;

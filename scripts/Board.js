@@ -108,8 +108,14 @@ class BoardClass {
             oldApple.classList.remove('apple')
         }
 
-        let w
-        let h
+        // let possibleAples = document.querySelectorAll('.cell:not(.snake):not(.border)')
+        // console.log(possibleAples.length);
+        // let index = Math.floor(Math.random() * possibleAples.length)
+        // let appleCoords = possibleAples[index].id.split('|')
+
+        // let w = parseInt(appleCoords[0])
+        // let h = parseInt(appleCoords[1])
+        let w, h
         do {
             w = Math.floor(Math.random() * S.width)
             h = Math.floor(Math.random() * S.height)

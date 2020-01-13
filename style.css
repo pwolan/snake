@@ -1,9 +1,11 @@
 * {
   box-sizing: border-box;
 }
+
 html {
   font-family: Arial, sans-serif;
 }
+
 #board {
   margin: 0 auto;
   display: grid;
@@ -23,11 +25,7 @@ html {
   background-color: #f00;
 }
 
-.snake {
-  /* background-image: url(img/body.png); */
-  background-size: contain;
-  background-position: center;
-}
+
 
 .apple {
   background-image: url(img/apple.png);
@@ -43,6 +41,7 @@ button {
   cursor: pointer;
   transition: 0.3s;
 }
+
 button:hover {
   box-shadow: 0px 0px 4px 2px #666;
 }
@@ -50,3 +49,10 @@ button:hover {
 .lose {
   text-align: center;
 }
+
+.snake {
+  /* background-image: url(img/body.png); */
+  background-size: contain;
+  background-position: center;
+}
+
